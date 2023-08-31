@@ -1,0 +1,22 @@
+
+
+
+const env= require("dotenv");
+const { mongoose } = require("../../config/db");
+const { students } = require("../../model/students");
+env.config()
+let adminController = (req,res)=>{
+ 
+    console.log('===>',req.query.name)
+   
+    
+
+    const kitty = new students({ name: req.query.name });
+    kitty.save().then(() => console.log('saved succesulfy'));
+
+    res.status(200).json({ 
+        msg:"okay"
+    })
+}
+
+exports.adminController = adminController;
